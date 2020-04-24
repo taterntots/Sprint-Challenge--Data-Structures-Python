@@ -46,31 +46,40 @@ class LinkedList:
         return False
 
     def reverse_list(self, node, prev):
+
+        # Define our starting node and previous node
+        curr_node = self.head
+        prev = None
+
         # (base case) If the list does not have any elements, OR
         # (base case) If the list has only one element, return
         if self.head == None or self.head.get_next() == None:
             return
+        # (base case) If there is no next element for our curr_node, make curr_node our header
+        if curr_node.get_next() == None:
+            self.head = curr_node
+            return
 
-        # Otherwise, run code to reverse the list
-        else:
-            # Define our starting node and previous node
-            curr_node = self.head
-            prev_node = None
+        # Otherwise, recursively reverse the list
+        reverse_list(curr_node.get_next())
+        curr_node.get_next().set_next(curr_node)
+        curr_node.set_next(null)
 
-            # Loop through the list until there is no curr_node
-            while curr_node:
-                # Set the next_node to our get_next function
-                next_node = curr_node.get_next()
-                # Set the next node from our current node to the previous node
-                curr_node.set_next(prev_node)
-                # Redefine curr_node and prev_node
-                prev_node = curr_node
-                curr_node = next_node
+        # else:
+        #     # Loop through the list until there is no curr_node
+        #     while curr_node:
+        #         # Set the next_node to our get_next function
+        #         next_node = curr_node.get_next()
+        #         # Set the next node from our current node to the previous node
+        #         curr_node.set_next(prev_node)
+        #         # Redefine curr_node and prev_node
+        #         prev_node = curr_node
+        #         curr_node = next_node
 
-            # If prev_node exists
-                # Assign the head to the prev_node and return the prev_node
-                self.head = prev_node
-                return prev_node
+        #     # If prev_node exists
+        #         # Assign the head to the prev_node and return the prev_node
+        #         self.head = prev_node
+        #         return prev_node
 
         # Otherwise, we'll need a while loop to run through the list
         # If we are at the head
