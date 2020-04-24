@@ -58,14 +58,25 @@ class LinkedList:
             prev_node = None
 
             # Loop through the list until there is no curr_node
-            
+            while curr_node:
+                # Set the next_node to our get_next function
+                next_node = curr_node.get_next()
+                # Set the next node from our current node to the previous node
+                curr_node.set_next(prev_node)
+                # Redefine curr_node and prev_node
+                prev_node = curr_node
+                curr_node = next_node
+
+            # If prev_node exists
+                # Assign the head to the prev_node and return the prev_node
+                self.head = prev_node
+                return prev_node
 
         # Otherwise, we'll need a while loop to run through the list
         # If we are at the head
             # Move to the next node
             # Set the value of the previous node to the head
             # Repeat until there is no next value (end of list)
-
 
 n = Node(10, 20)
 
