@@ -46,10 +46,7 @@ class LinkedList:
         return False
 
     def reverse_list(self, node, prev):
-        # You must use recursion for this solution
-        # You must use recursion for this solution
-        pass
-        # (base case) If the list does not have any elements, or
+        # (base case) If the list does not have any elements, OR
         # (base case) If the list has only one element, return
         if self.head == None or self.head.get_next() == None:
             return
